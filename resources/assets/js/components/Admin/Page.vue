@@ -1,0 +1,56 @@
+<template>
+    <div class="page-creator">
+        <page-view
+            class="page-creator-pane page-view"
+            :markdown="markdown"
+        ></page-view>
+        <page-editor
+            class="page-creator-pane page-editor"
+            @input="updatePreview"
+        ></page-editor>
+    </div>
+</template>
+<script>
+
+import Editor from './Page/Editor';
+import View from './Page/View';
+
+export default {
+    props: ['id'],
+    data() {
+        return {
+            'markdown': ''
+        };
+    },
+    methods: {
+        updatePreview(event) {
+            this.markdown = event.target.value;
+        }
+    },
+    components: {
+        'page-editor': Editor,
+        'page-view': View
+    }
+}
+</script>
+
+<style lang="scss" scoped>
+    .page-creator {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+
+        .page-creator-pane {
+            flex: 1 50%;
+        }
+
+        .page-view {
+
+        }
+
+        .page-editor {
+
+        }
+    }
+</style>
+

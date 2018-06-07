@@ -1,0 +1,84 @@
+@import url(https://fonts.googleapis.com/css?family=Dosis);*:focus {
+  outline: none;
+}
+
+body {
+  font-family: "Dosis", sans-serif;
+  margin: 0;
+}
+
+html,
+body,
+#app,
+#app-container {
+  height: 100%;
+}
+
+button {
+  cursor: pointer;
+}
+
+#app-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#app-container header {
+  -webkit-box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.3);
+  -webkit-box-flex: 0;
+      -ms-flex: none;
+          flex: none;
+  font-family: "Dosis", sans-serif;
+  text-align: right;
+}
+
+#app-container header nav {
+  display: inline-block;
+  font-size: 12px;
+}
+
+#app-container header nav a {
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-block;
+  padding: 13px 15px;
+  text-decoration: none;
+}
+
+#app-container header nav a:hover {
+  text-decoration: underline;
+}
+
+#app-container .auth-form {
+  display: block;
+  width: 300px;
+  margin: 0 auto;
+  padding: 40px 40px;
+}
+
+#app-container .auth-form .form-field:not(:first-child),
+#app-container .auth-form button:not(:first-child) {
+  margin-top: 8px;
+}
+
+#app-container .auth-form input,
+#app-container .auth-form button {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px 25px;
+  width: 100%;
+}
+
+#app-container .auth-form .form-field-error {
+  display: inline-block;
+  color: red;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
