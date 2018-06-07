@@ -49,7 +49,8 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
         ],
-        "phpcs": "./vendor/bin/phpcs -p --standard=ruleset.xml app/"
+        "phpcs": "./vendor/bin/phpcs -p --standard=ruleset.xml app/",
+        "phpcbf": "./vendor/bin/phpcbf -p --standard=ruleset.xml app/"
     },
     "config": {
         "preferred-install": "dist",
