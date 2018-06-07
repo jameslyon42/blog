@@ -26,7 +26,9 @@ class RedirectIfAuthenticated
                         ],
                         'redirect' => '/home',
                         'user' => Auth::user()->toArray()
-                    ], 409);
+                    ],
+                    409
+                );
         }
 
         return $next($request);
