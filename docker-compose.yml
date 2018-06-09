@@ -11,7 +11,7 @@ services:
     image: percona
     container_name: blog_db
     ports:
-      - "3306:3306"
+      - "5123:5123"
     volumes:
       - ./data:/var/lib/mysql
     environment:

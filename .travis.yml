@@ -1,18 +1,11 @@
-language: php
-
-php:
-  - 7.2
+services:
+  - docker
 
 sudo: required
 
 before_script:
-  - sudo chmod -R 777 bootstrap/cache
-  - sudo chmod -R 777 storage
   - cp .env.travis .env
-  - composer self-update
-  - composer install --no-interaction
-  - php artisan key:generate
+  - source bin/build_local
 
 script:
-  - vendor/bin/phpunit
-  - composer phpcs
+  - web_cmd ./bin/run_all
