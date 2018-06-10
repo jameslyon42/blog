@@ -1,4 +1,4 @@
 web_cmd() {
   var=$@
-  docker exec -it blog_web bash -c "cd /var/www/site/ && ${var}"
+  docker exec -it blog_php bash -c "cd /var/www/ && ${var}"
 }

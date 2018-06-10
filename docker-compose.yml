@@ -1,14 +1,31 @@
 version: "3"
 services:
-  web:
-    image: jameslyon42/web
-    container_name: blog_web
-    ports: 
+  nginx:
+    image: jameslyon42/nginx
+    container_name: blog_nginx
+    ports:
       - "80:80"
     volumes:
-      - ./:/var/www/site
+      - ./:/var/www/
+    environment:
+      - FPMIP=172.18.18.10:9000
+    networks:
+      blog:
+        ipv4_address: 172.18.18.9
+
+  php:
+    image: jameslyon42/php
+    container_name: blog_php
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/var/www/
+    networks:
+      blog:
+        ipv4_address: 172.18.18.10
+
   db:
-    image: percona
+    image: jameslyon42/gof_db
     container_name: blog_db
     ports:
       - "5123:5123"
@@ -16,3 +33,14 @@ services:
       - ./data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: asdfasdf
+    networks:
+      blog:
+        ipv4_address: 172.18.18.11
+
+networks:
+  blog:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.18.18.0/24
