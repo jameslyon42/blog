@@ -10,7 +10,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 });
 
+Route::resource('/pages', 'PageController');
+Route::put('/pages/{id}', 'PageController@update');
+
 Route::any('{query}','AdminController@index')
     ->where('query', '.*');
+
+
 
 

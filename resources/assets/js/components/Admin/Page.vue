@@ -6,6 +6,7 @@
         ></page-view>
         <page-editor
             class="page-creator-pane page-editor"
+            v-bind:page="page"
             @input="updatePreview"
         ></page-editor>
     </div>
@@ -19,8 +20,13 @@ export default {
     props: ['id'],
     data() {
         return {
-            'markdown': ''
+            markdown: ''
         };
+    },
+    computed: {
+        page() {
+            return this.$store.state.page;
+        }
     },
     methods: {
         updatePreview(event) {

@@ -1,8 +1,20 @@
 <template>
     <div class="page-editor">
-        <textarea
-            @input="emitEvent"
-        ></textarea>
+        <div class="page-editor-content">
+            <textarea
+                @input="emitEvent"
+                v-model="page.markdown"
+            ></textarea>
+            <div class="page-editor-content-section"
+                v-bind:class="{active: isSectionActive('settings')}"
+            >
+                <settings
+                    v-bind:page="page"
+                    v-bind:errors="errors"
+                    @save="save"
+                ></settings>
+            </div>
+        </div>
         <div class="sidebar">
             <div
                 class="save"
@@ -10,7 +22,10 @@
             >
                 <div class="icon"></div>
             </div>
-            <div class="settings">
+            <div
+                v-bind:class="[{active: isSectionActive('settings')}, 'settings']"
+                @click="setSection('settings')"
+            >
                 <div class="icon"></div>
             </div>
         </div>
@@ -18,14 +33,63 @@
 </template>
 
 <script>
+
+import Settings from './Settings.vue'
+
 export default {
+    data() {
+        return {
+            activeSection: 'settings',
+            errors: {}
+        };
+    },
+    computed: {
+        page() {
+            return this.$store.state.page;
+        }
+    },
     methods: {
         emitEvent(event) {
             this.$emit('input', event)
         },
         save() {
             console.log('asd');
+        },
+        setSection(section) {
+            if (this.activeSection === section) {
+                this.activeSection = false;
+            } else {
+                this.activeSection = section;
+            }
+        },
+        isSectionActive(section) {
+            return this.activeSection === section;
+        },
+        class(test) {
+            console.log(test);
+        },
+        save() {
+            const self = this;
+            const method = this.page.id ? 'PUT' : 'POST';
+            const route = '/pages' +  (this.page.id ? '/' + this.page.id : '');
+
+            axios.post(route, {...this.page, _method: method})
+            .then(function (response) {
+                if (!self.page.id) {
+                    self.$store.commit('setPage', response.data.page);
+                }
+            })
+            .catch(function (error) {
+                if (error.response.data.errors) {
+                    self.errors = error.response.data.errors;
+                } else {
+                    console.log(error);
+                }
+            });
         }
+    },
+    components: {
+        Settings
     }
 }
 </script>
@@ -35,16 +99,42 @@ export default {
         display: flex;
         flex-direction: row;
 
-        textarea {
-            background: rgb(33, 33, 33);
-            border: none;
-            box-sizing: border-box;
-            color: white;
-            display: block;
+        .page-editor-content {
             height: 100%;
-            padding: 20px;
-            resize: none;
+            overflow: hidden;
+            position: relative;
             width: 100%;
+
+            > * {
+                box-sizing: border-box;
+                height: 100%;
+                left: 0;
+                padding: 20px;
+                position: absolute;
+                top: 0;
+                width: 100%;
+            }
+
+            textarea {
+                background: rgb(33, 33, 33);
+                border: none;
+                color: white;
+                display: block;
+                resize: none;
+            }
+
+            .page-editor-content-section {
+                background: #333;
+                color: #fff;
+                left: 100%;
+                position: absolute;
+                top: 0;
+                transition: left .5s;
+
+                &.active {
+                    left: 0;
+                }
+            }
         }
 
         .sidebar {
@@ -56,7 +146,12 @@ export default {
                 cursor: pointer;
                 height: 32px;
 
-                &:hover {
+                &.active {
+                    background: #333;
+                }
+
+                &:hover
+                {
                     background: rgba(255, 255, 255, .3);
                 }
 
