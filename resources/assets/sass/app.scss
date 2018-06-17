@@ -52,11 +52,12 @@ button {
     }
   }
 
-  .auth-form {
+
+
+  form {
     display: block;
-    width: 300px;
     margin: 0 auto;
-    padding: 40px 40px;
+    width: 100%;
 
     .form-field,
     button {
@@ -78,5 +79,10 @@ button {
       font-size: 12px;
       margin-bottom: 3px;
     }
+  }
+
+  .auth-form {
+    padding: 40px 40px;
+    width: 300px;
   }
 }

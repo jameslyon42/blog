@@ -27,6 +27,7 @@ services:
   db:
     image: jameslyon42/gof_db
     container_name: blog_db
+    command: --port=5123
     ports:
       - "5123:5123"
     volumes:

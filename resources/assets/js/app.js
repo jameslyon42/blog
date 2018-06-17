@@ -54,11 +54,15 @@ const router = new VueRouter({
 
 const store = new Vuex.Store({
     state: {
-        user: false
+        user: false,
+        page: {}
     },
     mutations: {
         setUser(state, user) {
             state.user = user;
+        },
+        setPage(state, page) {
+            state.page = page;
         }
     }
 });
