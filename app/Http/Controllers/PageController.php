@@ -21,6 +21,26 @@ class PageController extends Controller
     }
 
     /**
+     * Show page
+     *
+     * @param Int $id
+     *
+     * @return JsonResponse
+     */
+    public function show(int $id): JsonResponse
+    {
+        $user = Auth::user();
+
+        $page = $user->pages()->find($id);
+
+        return $page
+            ? response()->json(compact('page'), 200)
+            : response()->json([
+                'error' => 'Page not found'
+            ], 404);
+    }
+
+    /**
      * Create page
      *
      * @param Request $request

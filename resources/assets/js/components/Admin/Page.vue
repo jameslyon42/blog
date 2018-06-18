@@ -31,7 +31,26 @@ export default {
     methods: {
         updatePreview(event) {
             this.markdown = event.target.value;
+        },
+        fetchPage(id) {
+            const self = this;
+            axios.get('/pages/' + id)
+                .then(function (response) {
+                    self.$store.commit('setPage', response.data.page);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    self.$router.push('/pages');
+                });
         }
+    },
+    created() {
+        if (!isNaN(this.id)) {
+            this.fetchPage(this.id);
+        } else if (this.id !== 'new') {
+            this.$router.push('/pages');
+        }
+
     },
     components: {
         'page-editor': Editor,

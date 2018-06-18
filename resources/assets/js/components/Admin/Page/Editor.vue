@@ -77,6 +77,7 @@ export default {
             .then(function (response) {
                 if (!self.page.id) {
                     self.$store.commit('setPage', response.data.page);
+                    self.$router.replace('/page/' + response.data.page.id)
                 }
             })
             .catch(function (error) {
