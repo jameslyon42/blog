@@ -28,5 +28,6 @@ export default {
 <style lang="scss" scoped>
     .page-view {
         padding: 0 20px;
+        word-wrap: break-word;
     }
 </style>
