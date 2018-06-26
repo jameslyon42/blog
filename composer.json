@@ -49,9 +49,12 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover"
         ],
+        "cover": "./vendor/bin/phpunit --coverage-clover=coverage.xml",
         "phpcs": "./vendor/bin/phpcs -p --standard=ruleset.xml app/",
         "phpcbf": "./vendor/bin/phpcbf -p --standard=ruleset.xml app/",
-        "phpunit": "./vendor/bin/phpunit"
+        "phpunit": "./vendor/bin/phpunit",
+        "phpunit-cover":"vendor/bin/phpunit --coverage-clover=coverage.xml",
+        "post-coverage": "curl -s https://codecov.io/bash | bash"
     },
     "config": {
         "preferred-install": "dist",

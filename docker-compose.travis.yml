@@ -1,0 +1,5 @@
+version: "3"
+services:
+  php:
+    environment:
+      - CODECOV_TOKEN=${CODECOV_TOKEN}
