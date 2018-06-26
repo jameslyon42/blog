@@ -66,7 +66,9 @@ export default {
         height: 100%;
 
         .page-creator-pane {
-            flex: 1 50%;
+            box-sizing: border-box;
+            flex: none;
+            width: 50%;
         }
 
         .page-view {

@@ -9,7 +9,6 @@
                 :error="errors.title"
                 v-on:input="handleInput"
                 placeholder="Title"
-                required
         ></app-input>
         <button
             v-html="submitText"
@@ -19,11 +18,6 @@
 
 <script>
 export default {
-    data() {
-        return {
-
-        }
-    },
     props: [
         'page',
         'errors'

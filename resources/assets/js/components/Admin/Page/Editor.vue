@@ -39,7 +39,7 @@ import Settings from './Settings.vue'
 export default {
     data() {
         return {
-            activeSection: 'settings',
+            activeSection: false,
             errors: {}
         };
     },
@@ -48,12 +48,19 @@ export default {
             return this.$store.state.page;
         }
     },
+    watch: {
+        errors() {
+            const self = this;
+            ['title'].forEach(key => {
+                if (Object.keys(self.errors).indexOf(key) > -1)    {
+                    self.activeSection = 'settings';
+                }
+            });
+        }
+    },
     methods: {
         emitEvent(event) {
             this.$emit('input', event)
-        },
-        save() {
-            console.log('asd');
         },
         setSection(section) {
             if (this.activeSection === section) {
@@ -75,17 +82,30 @@ export default {
 
             axios.post(route, {...this.page, _method: method})
             .then(function (response) {
+                let message = 'Page created successfully';
                 if (!self.page.id) {
+                    message = 'Page updated successfully';
                     self.$store.commit('setPage', response.data.page);
                     self.$router.replace('/page/' + response.data.page.id)
                 }
+
+                self.globalAlert('success', message);
+                self.errors = {};
             })
             .catch(function (error) {
+                let message;
                 if (error.response.data.errors) {
                     self.errors = error.response.data.errors;
+                    if (Object.keys(self.errors).length > 1) {
+                        message = 'Fix errors before submitting';
+                    } else {
+                        message = self.errors[Object.keys(self.errors)[0]][0];
+                    }
                 } else {
-                    console.log(error);
+                    message = 'Unknown error';
                 }
+
+                self.globalAlert('error', message);
             });
         }
     },
