@@ -1,10 +1,5 @@
 #!/bin/bash
 
-source tools/shell_helpers
-
-DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-
 docker-compose up -d
 
-web_cmd ./bin/build
-
+docker exec -it blog_php bash -c "./bin/build"

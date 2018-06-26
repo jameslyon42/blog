@@ -1,4 +1,5 @@
 #!/bin/bash
+composer self-update
 composer install --no-interaction
 php artisan key:generate
 npm install --require-dev
