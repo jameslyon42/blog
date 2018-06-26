@@ -12,6 +12,18 @@ Vue.component('app-input', require('./components/Shared/AppInput.vue'));
 Vue.use(VueRouter);
 Vue.use(Vuex);
 
+Vue.mixin({
+    methods: {
+        globalAlert(type, message) {
+            this.$store.commit('setAlert', {
+                type: type,
+                message: message,
+                timeout: 2000
+            });
+        }
+    }
+});
+
 import Login from './components/Auth/Login.vue';
 import Register from './components/Auth/Register.vue';
 import Home from './components/Admin/Home.vue';
@@ -55,7 +67,8 @@ const router = new VueRouter({
 const store = new Vuex.Store({
     state: {
         user: false,
-        page: {}
+        page: {},
+        alert: {}
     },
     mutations: {
         setUser(state, user) {
@@ -63,6 +76,9 @@ const store = new Vuex.Store({
         },
         setPage(state, page) {
             state.page = page;
+        },
+        setAlert(state, alert) {
+            state.alert = alert
         }
     }
 });
