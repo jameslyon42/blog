@@ -82,9 +82,9 @@ export default {
 
             axios.post(route, {...this.page, _method: method})
             .then(function (response) {
-                let message = 'Page created successfully';
+                let message = 'Page updated successfully';
                 if (!self.page.id) {
-                    message = 'Page updated successfully';
+                    message = 'Page created successfully';
                     self.$store.commit('setPage', response.data.page);
                     self.$router.replace('/page/' + response.data.page.id)
                 }
