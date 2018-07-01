@@ -4,7 +4,6 @@
         <section id="app-content">
             <alert></alert>
             <router-view
-                    @alert="test"
             ></router-view>
         </section>
     </div>
