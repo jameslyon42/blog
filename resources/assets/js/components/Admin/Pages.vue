@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="page-list-body">
-                <div v-for="page in pages" class="page-list-item">
+                <div v-for="(page, index) in pages" class="page-list-item">
                     <span class="page-list-item-title">{{ page.title }}</span>
                     <span class="page-list-item-user">{{ page.user.username }}</span>
                     <span class="page-list-item-user">{{ page.created_at }}</span>
@@ -21,7 +21,7 @@
                         <router-link to="" class="page-list-action" @click="">View</router-link>
                         <router-link :to="{ path: 'page/' + page.id }"
                                      class="page-list-action">Edit</router-link>
-                        <span to="" class="page-list-action">Delete</span>
+                        <span @click="destroyPage(index)" class="page-list-action">Delete</span>
                     </span>
                 </div>
             </div>
@@ -40,6 +40,26 @@ export default {
       this.fetchPages();
     },
     methods: {
+        destroyPage(index) {
+            const self = this;
+            const page = self.pages[index];
+
+            this.globalConfirm(
+                'Do you really want to delete this page?',
+                () => {
+                    axios.post('pages/' + page.id, {_method: 'delete'})
+                        .then(function () {
+                            const message = 'Page delete successfully';
+
+                            self.globalAlert('success', message);
+                            self.pages.splice(index, 1);
+                        })
+                        .catch(function () {
+                            self.globalAlert('error', 'There was an issue deleting that page');
+                        });
+                }
+            );
+        },
         fetchPages() {
             const self = this;
 

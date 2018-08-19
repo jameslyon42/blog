@@ -20,6 +20,12 @@ Vue.mixin({
                 message: message,
                 timeout: 2000
             });
+        },
+        globalConfirm(message, confirmCallback) {
+            this.$store.commit('setConfirm', {
+                message: message,
+                confirmCallback: confirmCallback
+            });
         }
     }
 });
@@ -68,7 +74,8 @@ const store = new Vuex.Store({
     state: {
         user: false,
         page: {},
-        alert: {}
+        alert: {},
+        confirm: {},
     },
     mutations: {
         setUser(state, user) {
@@ -79,6 +86,9 @@ const store = new Vuex.Store({
         },
         setAlert(state, alert) {
             state.alert = alert
+        },
+        setConfirm(state, confirm) {
+            state.confirm = confirm
         }
     }
 });

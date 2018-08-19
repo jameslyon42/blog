@@ -95,4 +95,18 @@ class PageController extends Controller
 
         return response('Update Successful', 200);
     }
+
+    /**
+     *
+     * Destroy a page
+     *
+     * @param int $id
+     * @return Response
+     */
+    public function destroy(int $id): Response
+    {
+        Page::destroy($id);
+
+        return response('Delete Successful', 200);
+    }
 }

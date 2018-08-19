@@ -13,6 +13,12 @@
         <button
             v-html="submitText"
         ></button>
+        <button
+            @click="destroy"
+            class="delete_button danger"
+        >
+            Delete
+        </button>
     </form>
 </template>
 
@@ -23,6 +29,26 @@ export default {
         'errors'
     ],
     methods: {
+        destroy(event) {
+            event.preventDefault();
+
+            const self = this;
+            this.globalConfirm(
+                'Do you really want to delete this page?',
+                () => {
+                    axios.post('pages/' + self.page.id, {_method: 'delete'})
+                        .then(function () {
+                            const message = 'Page deleted successfully';
+
+                            self.globalAlert('success', message);
+                            self.$router.push({ path: '/pages' });
+                        })
+                        .catch(function () {
+                            self.globalAlert('error', 'There was an issue deleting that page');
+                        });
+                }
+            );
+        },
         save() {
             this.$emit('save');
         },

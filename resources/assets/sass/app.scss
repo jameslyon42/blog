@@ -83,6 +83,12 @@ button {
       font-size: 12px;
       margin-bottom: 3px;
     }
+
+    button.danger {
+      background: red;
+      border: none;
+      color: white;
+    }
   }
 
   .auth-form {
