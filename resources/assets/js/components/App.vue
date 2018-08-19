@@ -6,6 +6,7 @@
             <router-view
             ></router-view>
         </section>
+        <confirm></confirm>
     </div>
 </template>
 
@@ -13,6 +14,7 @@
 
 import AppHeader from './Header.vue';
 import Alert from './Alert.vue';
+import Confirm from './Confirm.vue';
 
 export default {
     props: [
@@ -23,7 +25,8 @@ export default {
     },
     components: {
         'app-header': AppHeader,
-        'alert': Alert
+        'alert': Alert,
+        'confirm': Confirm
     }
 }
 </script>
