@@ -15,6 +15,10 @@ class Page extends Model
         'title'
     ];
 
+    protected $casts = [
+        'created_at' => 'datetime:Y-m-d',
+    ];
+
     public function user()
     {
         return $this->belongsTo('App\Models\Entities\User');

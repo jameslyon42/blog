@@ -37,6 +37,7 @@ export default {
             axios.get('/pages/' + id)
                 .then(function (response) {
                     self.$store.commit('setPage', response.data.page);
+                    self.markdown = self.page.markdown;
                 })
                 .catch(function (error) {
                     console.log(error);
