@@ -21,6 +21,17 @@ class PageController extends Controller
     }
 
     /**
+     * Index of pages
+     */
+    public function index()
+    {
+        $pages = Page::with('user')
+            ->orderBy('created_at', 'desc')
+            ->get();
+        return compact('pages');
+    }
+
+    /**
      * Show page
      *
      * @param Int $id
@@ -29,9 +40,7 @@ class PageController extends Controller
      */
     public function show(int $id): JsonResponse
     {
-        $user = Auth::user();
-
-        $page = $user->pages()->find($id);
+        $page = Page::find($id);
 
         return $page
             ? response()->json(compact('page'), 200)

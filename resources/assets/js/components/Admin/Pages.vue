@@ -1,8 +1,95 @@
 <template>
-    <div>asdasdssssssss</div>
+    <div class="page-list-container">
+        <h1>
+            Pages
+        </h1>
+        <div class="page-list">
+            <div class="page-list-header">
+                <div class="page-list-item">
+                    <span class="page-list-item-title">Title</span>
+                    <span class="page-list-item-user">User</span>
+                    <span class="page-list-item-created">Created</span>
+                    <span class="page-list-item-actions">Actions</span>
+                </div>
+            </div>
+            <div class="page-list-body">
+                <div v-for="page in pages" class="page-list-item">
+                    <span class="page-list-item-title">{{ page.title }}</span>
+                    <span class="page-list-item-user">{{ page.user.username }}</span>
+                    <span class="page-list-item-user">{{ page.created_at }}</span>
+                    <span class="page-list-item-actions">
+                        <router-link to="" class="page-list-action" @click="">View</router-link>
+                        <router-link :to="{ path: 'page/' + page.id }"
+                                     class="page-list-action">Edit</router-link>
+                        <span to="" class="page-list-action">Delete</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
 export default {
+    data() {
+        return {
+            pages: false
+        }
+    },
+    created() {
+      this.fetchPages();
+    },
+    methods: {
+        fetchPages() {
+            const self = this;
+
+            axios.get('/pages/')
+                .then(function (response) {
+                    const pages = response.data.pages;
+                    self.pages = pages;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    self.$router.push('/pages');
+                });
+        }
+    }
 }
 </script>
+
+<style lang="scss" scoped>
+    .page-list-container {
+        height: 100%;
+        overflow: auto;
+        padding: 30px 30px;
+        width: 100%;
+    }
+    .page-list {
+        margin: 0 100px;
+        .page-list-header {
+            font-weight: bold;
+        }
+        .page-list-item {
+            border-bottom: solid thin black;
+            font-size: 0;
+            > span {
+                box-sizing: border-box;
+                display: inline-block;
+                font-size: 18px;
+                padding: 5px;
+                width: 25%;
+
+                .page-list-action {
+                    color: black;
+                    cursor: pointer;
+                    padding: 0 5px;
+                    text-decoration: none;
+
+                    &:hover {
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+</style>
