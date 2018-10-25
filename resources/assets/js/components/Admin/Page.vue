@@ -1,7 +1,7 @@
 <template>
     <div class="page-creator">
         <page-view
-            class="page-creator-pane page-view"
+            class="page-creator-pane"
             :markdown="markdown"
         ></page-view>
         <page-editor
@@ -29,8 +29,8 @@ export default {
         }
     },
     methods: {
-        updatePreview(event) {
-            this.markdown = event.target.value;
+        updatePreview(value) {
+            this.markdown = value;
         },
         fetchPage(id) {
             const self = this;
@@ -41,7 +41,7 @@ export default {
                 })
                 .catch(function (error) {
                     console.log(error);
-                    self.$router.push('/pages');
+                    self.$router.push('/admin/pages');
                 });
         }
     },
@@ -49,9 +49,8 @@ export default {
         if (!isNaN(this.id)) {
             this.fetchPage(this.id);
         } else if (this.id !== 'new') {
-            this.$router.push('/pages');
+            this.$router.push('/admin/pages');
         }
-
     },
     components: {
         'page-editor': Editor,
@@ -70,10 +69,6 @@ export default {
             box-sizing: border-box;
             flex: none;
             width: 50%;
-        }
-
-        .page-view {
-
         }
 
         .page-editor {

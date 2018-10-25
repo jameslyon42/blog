@@ -47,7 +47,7 @@ export default {
             this.globalConfirm(
                 'Do you really want to delete this page?',
                 () => {
-                    axios.post('pages/' + page.id, {_method: 'delete'})
+                    axios.post('/pages/' + page.id, {_method: 'delete'})
                         .then(function () {
                             const message = 'Page delete successfully';
 
@@ -79,6 +79,7 @@ export default {
 
 <style lang="scss" scoped>
     .page-list-container {
+        box-sizing: border-box;
         height: 100%;
         overflow: auto;
         padding: 30px 30px;

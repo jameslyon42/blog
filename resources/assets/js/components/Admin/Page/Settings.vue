@@ -36,12 +36,12 @@ export default {
             this.globalConfirm(
                 'Do you really want to delete this page?',
                 () => {
-                    axios.post('pages/' + self.page.id, {_method: 'delete'})
+                    axios.post('/pages/' + self.page.id, {_method: 'delete'})
                         .then(function () {
                             const message = 'Page deleted successfully';
 
                             self.globalAlert('success', message);
-                            self.$router.push({ path: '/pages' });
+                            self.$router.push({ path: '/admin/pages' });
                         })
                         .catch(function () {
                             self.globalAlert('error', 'There was an issue deleting that page');

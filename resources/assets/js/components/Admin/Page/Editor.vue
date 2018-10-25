@@ -2,8 +2,11 @@
     <div class="page-editor">
         <div class="page-editor-content">
             <textarea
-                @input="emitEvent"
+                @input="emitEvent($event.target.value)"
+                @dragover.prevent
+                @drop="importImage"
                 v-model="page.markdown"
+                ref="textarea"
             ></textarea>
             <div class="page-editor-content-section"
                 v-bind:class="{active: isSectionActive('settings')}"
@@ -59,8 +62,8 @@ export default {
         }
     },
     methods: {
-        emitEvent(event) {
-            this.$emit('input', event)
+        emitEvent(value) {
+            this.$emit('input', value);
         },
         setSection(section) {
             if (this.activeSection === section) {
@@ -72,41 +75,77 @@ export default {
         isSectionActive(section) {
             return this.activeSection === section;
         },
-        class(test) {
-            console.log(test);
-        },
         save() {
             const self = this;
             const method = this.page.id ? 'PUT' : 'POST';
             const route = '/pages' +  (this.page.id ? '/' + this.page.id : '');
 
             axios.post(route, {...this.page, _method: method})
-            .then(function (response) {
-                let message = 'Page updated successfully';
-                if (!self.page.id) {
-                    message = 'Page created successfully';
-                    self.$store.commit('setPage', response.data.page);
-                    self.$router.replace('/page/' + response.data.page.id)
-                }
-
-                self.globalAlert('success', message);
-                self.errors = {};
-            })
-            .catch(function (error) {
-                let message;
-                if (error.response.data.errors) {
-                    self.errors = error.response.data.errors;
-                    if (Object.keys(self.errors).length > 1) {
-                        message = 'Fix errors before submitting';
-                    } else {
-                        message = self.errors[Object.keys(self.errors)[0]][0];
+                .then(function (response) {
+                    let message = 'Page updated successfully';
+                    if (!self.page.id) {
+                        message = 'Page created successfully';
+                        self.$store.commit('setPage', response.data.page);
+                        self.$router.replace('/page/' + response.data.page.id)
                     }
-                } else {
-                    message = 'Unknown error';
-                }
 
-                self.globalAlert('error', message);
+                    self.globalAlert('success', message);
+                    self.errors = {};
+                })
+                .catch(function (error) {
+                    let message;
+                    if (error.response.data.errors) {
+                        self.errors = error.response.data.errors;
+                        if (Object.keys(self.errors).length > 1) {
+                            message = 'Fix errors before submitting';
+                        } else {
+                            message = self.errors[Object.keys(self.errors)[0]][0];
+                        }
+                    } else {
+                        message = 'Unknown error';
+                    }
+
+                    self.globalAlert('error', message);
+                });
+        },
+        importImage(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            const self      = this;
+            const file      = e.dataTransfer.files[0];
+            const formData  = new FormData();
+
+            formData.append('image', file);
+            axios.post(
+                '/images',
+                formData,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }
+            ).then(function (response) {
+                const url = response.data.url;
+                const markdown = `\r\n \r\n ![Alt Text Here](${url}) \r\n \r\n`;
+
+                self.insertTextAtCursor(markdown);
             });
+        },
+        insertTextAtCursor(text) {
+            const textarea = this.$refs.textarea;
+            const startPos = textarea.selectionStart;
+            const endPos = textarea.selectionEnd;
+
+            if (this.page.markdown) {
+                this.page.markdown = this.page.markdown.substring(0, startPos)
+                    + text
+                    + this.page.markdown.substring(endPos, this.page.markdown.length);
+            } else {
+                this.page.markdown = text;
+            }
+
+            this.emitEvent(this.page.markdown);
         }
     },
     components: {

@@ -1,0 +1,26 @@
+// Variables
+@import "variables";
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Dosis');
+
+*:focus {
+  outline: none;
+}
+
+body {
+  font-family: $main-font;
+  margin: 0;
+}
+
+html,
+body,
+#app,
+#blog-container {
+  height: 100%;
+  width: 100%;
+}
+
+#blog-container {
+  overflow: auto;
+}

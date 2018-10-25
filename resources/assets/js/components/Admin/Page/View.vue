@@ -25,9 +25,16 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
     .page-view {
+        overflow: auto;
         padding: 0 20px;
         word-wrap: break-word;
+
+        img {
+            height: auto;
+            width: 100%;
+        }
     }
+
 </style>
