@@ -2,7 +2,7 @@
 @import "variables";
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Dosis');
+@import url('https://fonts.googleapis.com/css?family=Bitter|Lobster');
 
 *:focus {
   outline: none;
@@ -11,6 +11,16 @@
 body {
   font-family: $main-font;
   margin: 0;
+}
+
+h1 {
+  font-size: 32px;
+}
+
+p {
+  font-size: 18px;
+  line-height: 30px;
+  white-space: normal;
 }
 
 html,
@@ -24,3 +34,85 @@ body,
 #blog-container {
   overflow: auto;
 }
+
+.blog-header {
+  background: white;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 15px;
+  position: absolute;
+  top:0;
+  width: 100%;
+  z-index: 10;
+
+  .blog-header-title {
+    font-family: $title-font;
+    font-size: 2em;
+  }
+}
+
+.blog-content {
+  padding: 0 16px;
+  position: relative;
+
+  .hero-image {
+    display: block;
+    object-fit: cover;
+    object-position: bottom center;
+    height: calc(100vh - 16px);
+    width: 100%;
+  }
+
+  .blog-about {
+    padding: 16px 0;
+    font-size: 0;
+
+    @media screen and (min-width: $tablet) {
+      white-space: nowrap;
+    }
+
+    > * {
+      width: 100%;
+      vertical-align: middle;
+
+      @media screen and (min-width: $tablet) {
+        display: inline-block;
+        width: 70%;
+      }
+
+      @media screen and (min-width: $desktop-small) {
+        width: 50%;
+      }
+    }
+
+    .blog-about-description {
+      @media screen and (min-width: $tablet) {
+        box-sizing: border-box;
+        padding: 16px;
+      }
+
+      @media screen and (min-width: $desktop-small) {
+        box-sizing: border-box;
+        padding: 24px;
+      }
+    }
+
+    .blog-about-image {
+      @media screen and (min-width: $tablet) {
+        display: inline-block;
+        width: 30%;
+      }
+
+      @media screen and (min-width: $desktop-small) {
+        width: 50%;
+      }
+    }
+  }
+
+  .blog-map {
+    background: grey;
+    height: 100vh;
+    width: 100%;
+  }
+}
+
