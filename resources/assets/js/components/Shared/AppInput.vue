@@ -20,7 +20,7 @@
                         this.error
                     ),
                     createElement(
-                        'input', {
+                        this.tagType, {
                             attrs: {
                                 type: this.type,
                                 name: this.name,
@@ -47,6 +47,11 @@
             'placeholder',
             'required',
             'error'
-        ]
+        ],
+        computed: {
+            tagType() {
+                return (this.type === 'textarea') ? 'textarea' : 'input';
+            }
+        },
     }
 </script>

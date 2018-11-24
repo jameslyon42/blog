@@ -24,5 +24,6 @@ Route::prefix('api')->group(function () {
     });
 });
 
-Route::any('{query}', 'BlogController@home')
-    ->where('query', '.*');
+Route::get('/', 'BlogController@home')->name('blog_home');
+
+Route::get('/blog/{slug}', 'BlogController@show');

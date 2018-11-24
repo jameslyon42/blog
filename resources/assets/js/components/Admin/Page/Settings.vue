@@ -10,7 +10,40 @@
                 v-on:input="handleInput"
                 placeholder="Title"
         ></app-input>
+        <app-input
+                type="text"
+                name='slug'
+                :value="page.slug"
+                :error="errors.slug"
+                v-on:input="handleInput"
+                placeholder="Slug"
+        ></app-input>
+        <app-input
+                type="text"
+                name='location'
+                :value="page.location"
+                :error="errors.location"
+                v-on:input="handleInput"
+                placeholder="Location"
+        ></app-input>
+        <app-input
+                type="textarea"
+                name='description'
+                :value="page.description"
+                :error="errors.description"
+                v-on:input="handleInput"
+                placeholder="Description"
+        ></app-input>
+        <app-input
+                type="date"
+                name='published_at'
+                :value="page.published_at"
+                :error="errors.published_at"
+                v-on:input="handleInput"
+                placeholder="Publish Date"
+        ></app-input>
         <button
+            class="save"
             v-html="submitText"
         ></button>
         <button
@@ -65,7 +98,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>

@@ -19,15 +19,16 @@ class ImageController extends Controller
         $image_path_info = pathinfo($image->getClientOriginalName());
 
         $image_storage = Storage::disk('images');
+        $directoy = '/' . $request->page_id;
 
         do {
             $id = uniqid('IMAGE_');
             $filename = $id . '.' . $image_path_info['extension'];
-        } while ($image_storage->exists($filename));
+        } while ($image_storage->exists($directoy . '/' . $filename));
 
-        $image->storeAs('/', $filename, 'images');
+        $image->storeAs($directoy, $filename, 'images');
 
-        $url = $image_storage->url($filename);
+        $url = $image_storage->url($directoy . '/' . $filename);
 
         return response()->json(compact('url'));
     }

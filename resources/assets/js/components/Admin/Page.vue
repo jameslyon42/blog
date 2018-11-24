@@ -47,6 +47,7 @@ export default {
     },
     created() {
         if (!isNaN(this.id)) {
+            this.$store.commit('setPage', {});
             this.fetchPage(this.id);
         } else if (this.id !== 'new') {
             this.$router.push('/admin/pages');

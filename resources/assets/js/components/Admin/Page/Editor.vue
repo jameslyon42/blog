@@ -12,6 +12,7 @@
                 v-bind:class="{active: isSectionActive('settings')}"
             >
                 <settings
+                    class="page-editor-settings"
                     v-bind:page="page"
                     v-bind:errors="errors"
                     @save="save"
@@ -37,13 +38,15 @@
 
 <script>
 
+import Showdown from 'showdown';
 import Settings from './Settings.vue'
 
 export default {
     data() {
         return {
             activeSection: false,
-            errors: {}
+            errors: {},
+            converter: new Showdown.Converter(),
         };
     },
     computed: {
@@ -80,7 +83,12 @@ export default {
             const method = this.page.id ? 'PUT' : 'POST';
             const route = '/pages' +  (this.page.id ? '/' + this.page.id : '');
 
-            axios.post(route, {...this.page, _method: method})
+            axios.post(route,
+                {
+                    ...this.page,
+                    _method: method,
+                    html: this.converter.makeHtml(this.page.markdown)
+                })
                 .then(function (response) {
                     let message = 'Page updated successfully';
                     if (!self.page.id) {
@@ -117,6 +125,8 @@ export default {
             const formData  = new FormData();
 
             formData.append('image', file);
+            formData.append('page_id', this.page.id);
+
             axios.post(
                 '/images',
                 formData,
@@ -190,6 +200,7 @@ export default {
                 position: absolute;
                 top: 0;
                 transition: left .5s;
+                overflow: auto;
 
                 &.active {
                     left: 0;
