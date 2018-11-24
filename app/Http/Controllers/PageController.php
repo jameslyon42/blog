@@ -65,8 +65,13 @@ class PageController extends Controller
         ]);
 
         $page = $user->pages()->create([
-            'title' => $request->title,
-            'markdown' => $request->markdown
+            'title'         => $request->title,
+            'markdown'      => $request->markdown,
+            'html'          => $request->html,
+            'slug'          => $request->slug,
+            'location'      => $request->location,
+            'description'   => $request->description,
+            'published_at'  => $request->published_at,
         ]);
 
         return response()->json(compact('page'), 200);
@@ -89,8 +94,13 @@ class PageController extends Controller
         ]);
 
         $user->pages()->whereId($id)->update([
-            'title' => $request->title,
-            'markdown' => $request->markdown
+            'title'         => $request->title,
+            'markdown'      => $request->markdown,
+            'html'          => $request->html,
+            'slug'          => $request->slug,
+            'location'      => $request->location,
+            'description'   => $request->description,
+            'published_at'  => $request->published_at,
         ]);
 
         return response('Update Successful', 200);

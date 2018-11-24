@@ -71,6 +71,7 @@ button {
     }
 
     input,
+    textarea,
     button {
       box-sizing: border-box;
       padding: 10px 25px;
@@ -84,6 +85,12 @@ button {
       margin-bottom: 3px;
     }
 
+    button.save {
+      background: #4CAF50;
+      border: none;
+      color: white;
+    }
+
     button.danger {
       background: red;
       border: none;
@@ -94,6 +101,12 @@ button {
   .auth-form {
     padding: 40px 40px;
     width: 300px;
+  }
+
+  .page-editor-settings {
+    textarea {
+      height: 150px;
+    }
   }
 
 }

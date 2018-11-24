@@ -7,7 +7,6 @@
             <div class="page-list-header">
                 <div class="page-list-item">
                     <span class="page-list-item-title">Title</span>
-                    <span class="page-list-item-user">User</span>
                     <span class="page-list-item-created">Created</span>
                     <span class="page-list-item-actions">Actions</span>
                 </div>
@@ -15,7 +14,6 @@
             <div class="page-list-body">
                 <div v-for="(page, index) in pages" class="page-list-item">
                     <span class="page-list-item-title">{{ page.title }}</span>
-                    <span class="page-list-item-user">{{ page.user.username }}</span>
                     <span class="page-list-item-user">{{ page.created_at }}</span>
                     <span class="page-list-item-actions">
                         <router-link to="" class="page-list-action" @click="">View</router-link>
@@ -98,7 +96,7 @@ export default {
                 display: inline-block;
                 font-size: 18px;
                 padding: 5px;
-                width: 25%;
+                width: 33.3%;
 
                 .page-list-action {
                     color: black;
