@@ -15,6 +15,8 @@ class Page extends Model
         'title'
     ];
 
+    protected $appends = ['image'];
+
     protected $casts = [
         'created_at' => 'datetime:Y-m-d',
     ];
@@ -22,5 +24,12 @@ class Page extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\Entities\User');
+    }
+
+    public function getImageAttribute()
+    {
+        preg_match_all('/!\[[^\]]*\]\(([^)]*)\)/', $this->markdown, $matches);
+
+        return $matches[1][0] ?? null;
     }
 }

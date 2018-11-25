@@ -1,6 +1,10 @@
 @extends('blog.layout')
 
-@section('title', $page->title . ' - ' . 'The Jill Pill')
+@section('title', $page->title . ' - The Jill Pill')
+
+@php
+    $section = 'blog'
+@endphp
 
 @section('content')
     <div class="blog-page">
