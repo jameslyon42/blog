@@ -14,9 +14,21 @@
     <div id='app' class="blog-container" >
         <header class="blog-header">
             <nav class="blog-nav">
-                <a class="blog-nav-item" href="/">Home</a>
-                <a class="blog-nav-item" href="/blog">Blog</a>
-                <a class="blog-nav-item" href="/about">About</a>
+                <div class="blog-nav-menu-toggle">
+                    <input type="checkbox">
+                    <div class="blog-nav-menu-icon">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <div class="blog-nav-items-container">
+                        <div class="blog-nav-items">
+                            <a class="blog-nav-item {{ $section == 'home' ? 'selected' : '' }}" href="/">Home</a>
+                            <a class="blog-nav-item {{ $section == 'blog' ? 'selected' : '' }}" href="/blog">Blog</a>
+                            <a class="blog-nav-item {{ $section == 'about' ? 'selected' : '' }}" href="/about">About</a>
+                        </div>
+                    </div>
+                </div>
             </nav>
             <a class="blog-header-title" href="/">
                 The Jill Pill

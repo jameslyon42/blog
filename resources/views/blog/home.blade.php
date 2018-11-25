@@ -2,6 +2,10 @@
 
 @section('title', 'The Jill Pill')
 
+@php
+    $section = 'home'
+@endphp
+
 @section('content')
     <div class="hero-image-container">
         <img class="hero-image" src="/images/home_hero.jpeg">
@@ -19,14 +23,8 @@
     {{--</section>--}}
     <section class="blog-samples">
         @foreach ($recent_pages as $page)
-            <a class="blog-sample" href="/blog/{{ $page['slug'] }}">
-                <img src="{{ $page['image'] }}">
-                <div class="gradient">
-                    <div class="blog-sample-text">
-                        <h2 class="blog-sample-title">{{ $page['title'] }}</h2>
-                    </div>
-                </div>
-            </a>
+            @component('blog.components.blog_sample', ['page' => $page])
+            @endcomponent
         @endforeach
     </section>
 @endsection
