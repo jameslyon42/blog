@@ -6,6 +6,13 @@
     $section = 'blog'
 @endphp
 
+@push('meta')
+    <meta property="og:title" content="{{ $page->title }}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="{{ url()->current() }}" />
+    <meta property="og:image" content="{{ url($page['image']) }}" />
+@endpush
+
 @section('content')
     <div class="blog-page">
         <h3 class="blog-page-details">

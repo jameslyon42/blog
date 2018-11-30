@@ -9,6 +9,9 @@
     <title>@yield('title')</title>
 
     <link rel="stylesheet" href="/css/blog.css">
+
+    @stack('meta')
+
 </head>
 <body>
     <div id='app' class="blog-container" >
