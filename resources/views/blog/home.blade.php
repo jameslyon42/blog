@@ -1,6 +1,6 @@
 @extends('blog.layout')
 
-@section('title', 'The Jill Pill')
+@section('title', config('app.name'))
 
 @php
     $section = 'home'

@@ -31,7 +31,7 @@
                 </div>
             </nav>
             <a class="blog-header-title" href="/">
-                The Jill Pill
+                {{ config('app.name') }}
             </a>
         </header>
         <div class="blog-content">

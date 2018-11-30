@@ -40,4 +40,9 @@ class BlogController extends Controller
 
         return view('blog.index', compact('pages'));
     }
+
+    public function about()
+    {
+        return view('blog.about');
+    }
 }
