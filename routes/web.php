@@ -29,3 +29,5 @@ Route::get('/', 'BlogController@home')->name('blog_home');
 Route::get('/blog', 'BlogController@index')->name('blog_index');
 
 Route::get('/blog/{slug}', 'BlogController@show');
+
+Route::get('/about', 'BlogController@about');

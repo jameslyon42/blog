@@ -2,7 +2,7 @@
 @import "variables";
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Bitter|Lobster');
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Text+Me+One|Lobster');
 
 *:focus {
   outline: none;
@@ -25,13 +25,23 @@ p {
 
 html,
 body,
-#app,
-#blog-container {
+#app {
   width: 100%;
 }
 
-#blog-container {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $header-font;
+}
+
+.blog-container {
   overflow: auto;
+  min-width: 300px;
+  position: relative;
 }
 
 .blog-header {
@@ -64,7 +74,7 @@ body,
 
     @media screen and (min-width: $tablet) {
       padding: 0 56px 56px;
-      height: calc(100vh - 56px);
+      height: calc(100vh - 86px);
     }
 
     .hero-image {
@@ -76,56 +86,6 @@ body,
     }
   }
 
-  .blog-about {
-    font-size: 0;
-    padding: 16px 32px;
-
-    @media screen and (min-width: $tablet) {
-      padding: 80px 56px;
-      white-space: nowrap;
-    }
-
-    @media screen and (min-width: $desktop-small) {
-
-    }
-
-    > * {
-      width: 100%;
-      vertical-align: middle;
-
-      @media screen and (min-width: $tablet) {
-        display: inline-block;
-        width: 70%;
-      }
-
-
-    }
-
-    .blog-about-description {
-      @media screen and (min-width: $tablet) {
-        box-sizing: border-box;
-        padding-left: 56px;
-      }
-
-      @media screen and (min-width: $desktop-small) {
-        box-sizing: border-box;
-      }
-    }
-
-    .blog-about-image {
-      @media screen and (min-width: $tablet) {
-        display: inline-block;
-        width: 30%;
-      }
-    }
-  }
-
-  .blog-map {
-    background: grey;
-    height: 100vh;
-    width: 100%;
-  }
-
   .blog-samples {
     box-sizing: border-box;
     padding: 16px;
@@ -134,35 +94,14 @@ body,
     @media screen and (min-width: $tablet) {
       padding: 0 56px 16px;
     }
-
-    @media screen and (min-width: $desktop-small) {
-
-    }
-
-
   }
 }
 
 .blog-footer {
+  font-family: $header-font;
   padding: 24px;
   text-align: center;
-}
-
-.blog-page {
-  margin-top: 90px;
-  padding: 16px 32px;
-
-  @media screen and (min-width: $desktop-small) {
-    padding:  16px 56px;
-  }
-
-  @media screen and (min-width: $desktop-large) {
-    padding: 16px 256px;
-  }
-
-  img {
-    width: 100%;
-  }
+  font-size: 24px;
 }
 
 .blog-index {
@@ -247,19 +186,13 @@ body,
 }
 
 nav {
+  font-family: $header-font;
   top: 0;
   left: 0;
   position: absolute;
   height: 70px;
   width: 100%;
   z-index: 12;
-
-  @media screen and (min-width: $mobile-large) {
-  }
-
-  @media screen and (min-width: $tablet) {
-    left: 56px;
-  }
 
   .blog-nav-items-container {
     position: absolute;
@@ -289,6 +222,10 @@ nav {
         width: auto;
       }
 
+      @media screen and (min-width: $tablet) {
+        margin-left: 56px;
+      }
+
       .blog-nav-item {
         display: block;
         padding: 16px 32px;
@@ -296,6 +233,7 @@ nav {
         color: black;
         text-decoration: none;
         margin-right: 16px;;
+        outline: none;
 
         @media screen and (min-width: $mobile-large) {
           display: inline-block;
@@ -367,6 +305,50 @@ nav {
         &:last-child {
           margin-bottom: 0;
         }
+      }
+    }
+  }
+}
+
+.blog-about,
+.blog-page {
+  margin: 70px auto 0;
+  padding: 16px;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 800px;
+    padding: 56px;
+  }
+
+  @media screen and (min-width: $desktop-large) {
+    max-width: none;
+    padding: 56px 256px;
+  }
+
+  img {
+    width: 100%;
+  }
+}
+
+.blog-about {
+  .blog-about-content {
+    @media screen and (min-width: $tablet) {
+      display: grid;
+      grid-template-columns: 40% auto;
+      grid-gap: 32px;
+    }
+  }
+}
+
+.blog-page {
+  .blog-page-text {
+
+    img {
+      display: block;
+      margin: 16px 0;
+
+      @media screen and (min-width: $tablet) {
+        margin: 32px 0;
       }
     }
   }
