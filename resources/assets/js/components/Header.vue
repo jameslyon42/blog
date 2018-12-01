@@ -2,7 +2,7 @@
     <header>
         <nav>
             <router-link v-show="!user" to="/admin/login">Login</router-link>
-            <router-link v-show="!user" to="/admin/register">Register</router-link>
+            <!--<router-link v-show="!user" to="/admin/register">Register</router-link>-->
             <router-link v-show="user" to="/admin/home">Home</router-link>
             <router-link v-show="user" to="/admin/pages">Pages</router-link>
             <a v-show="user" v-on:click="logout">Logout</a>
