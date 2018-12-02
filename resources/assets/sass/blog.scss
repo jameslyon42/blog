@@ -2,7 +2,7 @@
 @import "variables";
 
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Merriweather|Text+Me+One|Lobster');
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic|Lobster');
 
 *:focus {
   outline: none;
@@ -36,6 +36,7 @@ h4,
 h5,
 h6 {
   font-family: $header-font;
+  font-weight: bold;
 }
 
 .blog-container {
@@ -47,7 +48,7 @@ h6 {
 .blog-header {
   box-sizing: border-box;
   text-align: center;
-  padding: 15px;
+  padding: 16px;
   position: absolute;
   top:0;
   width: 100%;
@@ -60,6 +61,29 @@ h6 {
     position: relative;
     text-decoration: none;
     z-index: 20;
+
+    &:hover {
+      color: $teal;
+    }
+  }
+  .social-icons {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+
+    @media screen and (min-width: $tablet) {
+      right: 56px;
+    }
+
+    .social-icon {
+      margin-left: 16px;
+
+      @media screen and (min-width: $tablet) {
+        margin-left: 32px;
+      }
+    }
   }
 }
 
@@ -73,8 +97,9 @@ h6 {
     height: calc(100vh - 86px);
 
     @media screen and (min-width: $tablet) {
+      box-sizing: border-box;
       padding: 0 56px 56px;
-      height: calc(100vh - 86px);
+      height: calc(100vh - 70px);
     }
 
     .hero-image {
@@ -242,6 +267,7 @@ nav {
 
         &:hover,
         &.selected {
+          color: teal;
           font-weight: bold;
         }
       }
@@ -316,13 +342,8 @@ nav {
   padding: 16px;
 
   @media screen and (min-width: $tablet) {
-    max-width: 800px;
+    max-width: 700px;
     padding: 56px;
-  }
-
-  @media screen and (min-width: $desktop-large) {
-    max-width: none;
-    padding: 56px 256px;
   }
 
   img {
@@ -342,7 +363,6 @@ nav {
 
 .blog-page {
   .blog-page-text {
-
     img {
       display: block;
       margin: 16px 0;
@@ -350,6 +370,40 @@ nav {
       @media screen and (min-width: $tablet) {
         margin: 32px 0;
       }
+    }
+  }
+
+  .social-icons {
+    @media screen and (min-width: $desktop-small) {
+      position: fixed;
+      top: 200px;
+      left: 50%;
+      transform: translateX(-432px);
+    }
+
+    .social-icon {
+      margin-right: 16px;
+
+      @media screen and (min-width: $desktop-small) {
+        display: block;
+        margin-bottom: 24px;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.social-icons {
+  .social-icon {
+    color: black;
+    cursor: pointer;
+    font-size: 32px;
+    text-decoration: none;
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+      color: $teal;
     }
   }
 }

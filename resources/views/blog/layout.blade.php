@@ -8,9 +8,12 @@
 
     <title>@yield('title')</title>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/blog.css">
 
     @stack('meta')
+
+    <script src="/js/blog.js" type="text/javascript"></script>
 
 </head>
 <body>
@@ -33,6 +36,29 @@
                     </div>
                 </div>
             </nav>
+            <div class="social-icons">
+                <a
+                        class="fa social-icon social-icon-twitter"
+                        href="https://www.twitter.com/the_jillpill"
+                        target="_blank"
+                >
+                    &#xf099;
+                </a>
+                <a
+                    class="fa social-icon social-icon-fb"
+                    href="https://www.facebook.com/profile.php?id=8831813"
+                    target="_blank"
+                >
+                    &#xf230;
+                </a>
+                <a
+                    class="fa social-icon social-icon-instagram"
+                    href="https://www.instagram.com/the_jillpill"
+                    target="_blank"
+                >
+                    &#xf16d;
+                </a>
+            </div>
             <a class="blog-header-title" href="/">
                 {{ config('app.name') }}
             </a>
