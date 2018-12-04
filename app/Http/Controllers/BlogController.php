@@ -18,12 +18,6 @@ class BlogController extends Controller
             ->get()
             ->toArray();
 
-//        foreach ($recent_pages as $key => $page) {
-//            preg_match_all('/!\[[^\]]*\]\(([^)]*)\)/', $page['markdown'], $matches);
-//
-//            $recent_pages[$key]['image'] = $matches[1][0];
-//        }
-
         return view('blog.home', compact('recent_pages'));
     }
 
@@ -36,7 +30,7 @@ class BlogController extends Controller
 
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::orderBy('published_at', 'desc')->get();
 
         return view('blog.index', compact('pages'));
     }

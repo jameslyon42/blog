@@ -13,13 +13,13 @@
             <img src="/images/about_jill_pill.jpeg">
             <div class="blog-about-text">
                 <p>
-                    I’m Jill, a wife, mother to 2 cats, titi to several related and unrelated children and here to spread some sunshine.
+                    I’m Jill, a wife, mother to two cats, titi to several related and unrelated children and here to spread some sunshine.
                 </p>
                 <p>
-                    My husband, James, and I love to embrace change and explore this beautiful world. We lived and traveled throughout the US in a DIY renovated RV for 8 months and now we are traveling internationally.
+                    My husband, James, and I love to embrace change and explore this beautiful world. We lived and traveled throughout the US in a DIY renovated RV for eight months and now we are traveling internationally.
                 </p>
                 <p>
-                    I love wellness, health, fitness and anything that will add value and meaning to life. My dream is to share my experience and knowledge with others in hopes to inspire even just one person to live their best life or at least make them laugh a little.
+                    I love wellness, health, fitness and anything that will add value and meaning to life. My dream is to share my experience and knowledge with you in hopes to inspire you to live your best life or at least make you laugh a little.
                 </p>
                 <p>
                     One love,
