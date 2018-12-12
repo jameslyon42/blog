@@ -32,10 +32,8 @@ Vue.mixin({
 
 import Login from './components/Auth/Login.vue';
 import Register from './components/Auth/Register.vue';
-import Home from './components/Admin/Home.vue';
 import Pages from './components/Admin/Pages.vue';
 import Page from './components/Admin/Page.vue';
-const Welcome = { template: '<div>Welcome</div>' };
 
 const routes = [
     {
@@ -47,22 +45,22 @@ const routes = [
         component: Register
     },
     {
-        path: '/admin/home',
-        component: Home
+        path: '/admin/',
+        component: Pages
     },
     {
         path: '/admin/pages',
         component: Pages
     },
     {
+        path: '/admin/page',
+        component: Page,
+    },
+    {
         path: '/admin/page/:id',
         component: Page,
         props: true
-    },
-    {
-        path: '/',
-        component: Welcome
-    },
+    }
 ];
 
 const router = new VueRouter({

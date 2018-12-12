@@ -1,8 +1,16 @@
 <template>
     <div class="page-list-container">
-        <h1>
-            Pages
-        </h1>
+        <div class="page-list-title">
+            <h1>
+                Pages
+            </h1>
+            <router-link
+                    class="material-icons page-list-create-page"
+                    to="/admin/page"
+            >
+                &#xe148;
+            </router-link>
+        </div>
         <div class="page-list">
             <div class="page-list-header">
                 <div class="page-list-item">
@@ -82,6 +90,19 @@ export default {
         overflow: auto;
         padding: 30px 30px;
         width: 100%;
+    }
+    .page-list-title {
+        h1 {
+            display: inline-block;
+            margin-right: 15px;
+            vertical-align: middle;
+        }
+
+        .page-list-create-page {
+            text-decoration: none;
+            color: black;
+            vertical-align: middle;
+        }
     }
     .page-list {
         margin: 0 100px;

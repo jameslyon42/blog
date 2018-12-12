@@ -49,7 +49,7 @@ export default {
         if (!isNaN(this.id)) {
             this.$store.commit('setPage', {});
             this.fetchPage(this.id);
-        } else if (this.id !== 'new') {
+        } else if (typeof this.id !== 'undefined') {
             this.$router.push('/admin/pages');
         }
     },
