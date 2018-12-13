@@ -25,7 +25,7 @@
                     <span class="page-list-item-user">{{ page.created_at }}</span>
                     <span class="page-list-item-actions">
                         <router-link to="" class="page-list-action" @click="">View</router-link>
-                        <router-link :to="{ path: 'page/' + page.id }"
+                        <router-link :to="{ path: '/admin/page/' + page.id }"
                                      class="page-list-action">Edit</router-link>
                         <span @click="destroyPage(index)" class="page-list-action">Delete</span>
                     </span>
@@ -76,7 +76,7 @@ export default {
                 })
                 .catch(function (error) {
                     console.log(error);
-                    self.$router.push('/pages');
+                    self.$router.push('/admin/login');
                 });
         }
     }

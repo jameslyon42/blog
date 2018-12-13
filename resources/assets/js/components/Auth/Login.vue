@@ -41,7 +41,7 @@
                     .then(function (response) {
                         window.axios.defaults.headers.common['X-CSRF-TOKEN'] = response.data.csrf;
                         self.$store.commit('setUser', response.data.user);
-                        self.$router.push('home');
+                        self.$router.push('/admin');
                     })
                     .catch(function (error) {
                         if (error.response.data.errors) {

@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
                         'errors'     => [
                             'logged_in' => 'User is already logged in'
                         ],
-                        'redirect' => '/home',
+                        'redirect' => '/admin',
                         'user' => Auth::user()->toArray()
                     ],
                     409
