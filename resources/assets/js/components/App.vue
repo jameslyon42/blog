@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
 import AppHeader from './Header.vue';
 import Alert from './Alert.vue';
 import Confirm from './Confirm.vue';
@@ -21,7 +20,9 @@ export default {
         'user'
     ],
     mounted() {
-        this.$store.commit('setUser', this.user);
+        if (this.user) {
+            this.$store.commit('setUser', this.user);
+        }
     },
     components: {
         'app-header': AppHeader,

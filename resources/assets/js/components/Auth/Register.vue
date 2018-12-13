@@ -40,7 +40,7 @@
                 axios.post('admin/register', this.data)
                 .then(function (response) {
                     self.$store.commit('setUser', response.data.user);
-                    self.$router.push('home');
+                    self.$router.push('/admin');
                 })
                 .catch(function (error) {
                     if (error.response.data.errors) {

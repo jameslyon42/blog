@@ -1,8 +1,8 @@
 
 require('./bootstrap');
 
-import Vuex from 'vuex'
-import VueRouter from 'vue-router'
+import Vuex from 'vuex';
+import VueRouter from 'vue-router';
 
 window.Vue = require('vue');
 
@@ -38,34 +38,58 @@ import Page from './components/Admin/Page.vue';
 const routes = [
     {
         path: '/admin/login',
-        component: Login
+        component: Login,
     },
     {
         path: '/admin/register',
-        component: Register
+        component: Register,
     },
     {
         path: '/admin/',
-        component: Pages
+        component: Pages,
+        meta: {
+            authRequired: true,
+        },
     },
     {
         path: '/admin/pages',
-        component: Pages
+        component: Pages,
+        meta: {
+            authRequired: true,
+        },
     },
     {
         path: '/admin/page',
         component: Page,
+        meta: {
+            authRequired: true,
+        },
     },
     {
         path: '/admin/page/:id',
         component: Page,
-        props: true
+        props: true,
+        meta: {
+            authRequired: true,
+        },
     }
 ];
 
 const router = new VueRouter({
     mode: 'history',
     routes
+});
+
+router.beforeEach((to, from, next) => {
+    setTimeout(() => {
+        if (to.meta.authRequired === true) {
+            if (store.state.user === false) {
+                next('/admin/login');
+            }
+        }
+    });
+
+    next();
 });
 
 const store = new Vuex.Store({
