@@ -1,5 +1,13 @@
+import WorldMap from './components/Blog/WorldMap';
+
+window.Vue = require('vue');
+
+Vue.component('world-map', WorldMap);
 
 window.onload = function () {
+    const app = new Vue({
+        el: '#app'
+    });
 
     //Facebook
     window.fbAsyncInit = function() {

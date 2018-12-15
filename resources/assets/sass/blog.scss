@@ -108,6 +108,7 @@ h6 {
       box-sizing: border-box;
       padding: 0 56px 56px;
       height: calc(100vh - 70px);
+      min-height: 500px;
     }
 
     .hero-image {
@@ -501,4 +502,9 @@ nav.blog-nav {
       color: $teal;
     }
   }
+}
+
+.blog-map {
+  height: 500px;
+  margin: 0 56px;
 }

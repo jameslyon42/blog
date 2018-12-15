@@ -6,6 +6,11 @@
     $section = 'home'
 @endphp
 
+@push('scripts')
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_API_KEY') }}"
+            async defer></script>
+@endpush
+
 @section('content')
     <div class="hero-image-container">
         <img class="hero-image" src="/images/home_hero.jpeg">
@@ -27,4 +32,5 @@
             @endcomponent
         @endforeach
     </section>
+    <world-map></world-map>
 @endsection
