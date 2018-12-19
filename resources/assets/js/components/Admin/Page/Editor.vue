@@ -94,7 +94,7 @@ export default {
                     if (!self.page.id) {
                         message = 'Page created successfully';
                         self.$store.commit('setPage', response.data.page);
-                        self.$router.replace('/page/' + response.data.page.id)
+                        self.$router.replace('/admin/page/' + response.data.page.id)
                     }
 
                     self.globalAlert('success', message);

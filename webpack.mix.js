@@ -23,5 +23,8 @@ mix.js('resources/assets/js/admin.js', 'public/js')
     .js('resources/assets/js/blog.js', 'public/js')
     .sass('resources/assets/sass/blog.scss', 'public/css');
 
-mix.browserSync();
+mix.browserSync({
+    open: false,
+    proxy: "blog_nginx",
+});
 mix.disableNotifications();
