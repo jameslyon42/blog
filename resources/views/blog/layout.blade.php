@@ -14,6 +14,19 @@
 
     <script src="/js/blog.js" type="text/javascript"></script>
 
+    @stack('scripts')
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ env('GOOGLE_ANALYTICS_ID') }}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', '{{ env('GOOGLE_ANALYTICS_ID') }}');
+    </script>
+
+
 </head>
 <body>
     <div id='app' class="blog-container" >
