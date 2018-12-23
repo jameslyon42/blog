@@ -87,13 +87,11 @@ class PageController extends Controller
      */
     public function update(Request $request, int $id): Response
     {
-        $user = Auth::user();
-
         $request->validate([
             'title' => 'required'
         ]);
 
-        $user->pages()->whereId($id)->update([
+        Page::whereId($id)->update([
             'title'         => $request->title,
             'markdown'      => $request->markdown,
             'html'          => $request->html,
