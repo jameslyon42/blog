@@ -44,33 +44,14 @@
                             <a class="blog-nav-item {{ $section == 'home' ? 'selected' : '' }}" href="/">Home</a>
                             <a class="blog-nav-item {{ $section == 'blog' ? 'selected' : '' }}" href="/blog">Blog</a>
                             <a class="blog-nav-item {{ $section == 'about' ? 'selected' : '' }}" href="/about">About</a>
+                            @component('blog.components.social_links')
+                            @endcomponent
                         </div>
                     </div>
                 </div>
             </nav>
-            <div class="social-icons">
-                <a
-                        class="fa social-icon social-icon-twitter"
-                        href="https://www.twitter.com/the_jillpill"
-                        target="_blank"
-                >
-                    &#xf099;
-                </a>
-                <a
-                    class="fa social-icon social-icon-fb"
-                    href="https://www.facebook.com/profile.php?id=8831813"
-                    target="_blank"
-                >
-                    &#xf230;
-                </a>
-                <a
-                    class="fa social-icon social-icon-instagram"
-                    href="https://www.instagram.com/the_jillpill"
-                    target="_blank"
-                >
-                    &#xf16d;
-                </a>
-            </div>
+            @component('blog.components.social_links')
+            @endcomponent
             <a class="blog-header-title" href="/">
                 {{ config('app.name') }}
             </a>
@@ -79,7 +60,7 @@
             @yield('content')
         </div>
         <footer class="blog-footer">
-            jill@thejillpill.com
+            <a href="mailto:jill@thejillpill.com">jill@thejillpill.com</a>
         </footer>
     </div>
 
