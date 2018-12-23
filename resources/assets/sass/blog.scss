@@ -67,12 +67,18 @@ h6 {
       color: $teal;
     }
   }
-  .social-icons {
+
+   > .social-icons {
+    display: none;
     position: absolute;
     right: 16px;
     top: 50%;
     transform: translateY(-50%);
     z-index: 20;
+
+    @media screen and (min-width: $mobile-large){
+      display: block;
+    }
 
     @media screen and (min-width: $tablet) {
       right: 56px;
@@ -128,6 +134,16 @@ h6 {
   padding: 24px;
   text-align: center;
   font-size: 24px;
+
+  a {
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      color: $teal;
+    }
+  }
 }
 
 .blog-index {
@@ -181,26 +197,13 @@ h6 {
       object-fit: cover;
     }
 
-    .gradient {
-      background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
-      bottom: 0;
-      display: block;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-
-      &:hover {
-        background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, .5) 100%);
-      }
-    }
-
     .blog-sample-text {
       color: white;
       position: absolute;
-      top: 50%;
+      top: 25%;
       text-align: center;
       transform: translateY(-50%);
+      transition: all .5s;
       width: 100%;
 
       h2 {
@@ -208,6 +211,28 @@ h6 {
         margin: 0;
       }
     }
+
+    .gradient {
+      background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+      bottom: -100%;
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      transition: all .5s;
+
+      &:hover {
+        transform: translateY(-50%);
+
+        .blog-sample-text {
+          color: $teal;
+          top: 75%
+        }
+      }
+    }
+
+
   }
 }
 
@@ -258,20 +283,30 @@ nav {
         text-align: center;
         color: black;
         text-decoration: none;
-        margin-right: 16px;;
         outline: none;
 
         @media screen and (min-width: $mobile-large) {
           display: inline-block;
+          margin-right: 16px;
           padding: 0;
         }
 
         &:hover,
         &.selected {
-          color: teal;
+          color: $teal;
           font-weight: bold;
         }
       }
+
+       .social-icons {
+         @media screen and (min-width: $mobile-large) {
+           display: none;
+         }
+
+         .social-icon {
+           margin: 16px;
+         }
+       }
     }
   }
 
