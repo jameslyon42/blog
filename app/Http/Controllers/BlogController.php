@@ -39,4 +39,9 @@ class BlogController extends Controller
     {
         return view('blog.about');
     }
+
+    public function policy()
+    {
+        return view('blog.policy');
+    }
 }
