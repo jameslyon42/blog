@@ -31,3 +31,5 @@ Route::get('/blog', 'BlogController@index')->name('blog_index');
 Route::get('/blog/{slug}', 'BlogController@show');
 
 Route::get('/about', 'BlogController@about');
+
+Route::get('/policy', 'BlogController@policy');

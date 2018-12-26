@@ -133,6 +133,7 @@ h6 {
 .blog-footer {
   font-family: $header-font;
   padding: 24px;
+  position: relative;
   text-align: center;
   font-size: 24px;
 
@@ -143,6 +144,22 @@ h6 {
 
     &:hover {
       color: $teal;
+    }
+  }
+
+  nav {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 16px;
+
+    @media screen and (min-width: $tablet) {
+      padding-right: 56px;
+    }
+
+    a {
+      font-size: 14px;
     }
   }
 }
@@ -237,7 +254,7 @@ h6 {
   }
 }
 
-nav {
+nav.blog-nav {
   font-family: $header-font;
   top: 0;
   left: 0;
@@ -373,6 +390,7 @@ nav {
   }
 }
 
+.blog-policy,
 .blog-about,
 .blog-page {
   margin: 70px auto 0;

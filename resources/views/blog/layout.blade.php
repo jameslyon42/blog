@@ -61,6 +61,9 @@
         </div>
         <footer class="blog-footer">
             <a href="mailto:jill@thejillpill.com">jill@thejillpill.com</a>
+            <nav>
+                <a href="/policy">Privacy Policy</a>
+            </nav>
         </footer>
     </div>
 
