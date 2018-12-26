@@ -18,6 +18,7 @@ h1 {
   font-size: 32px;
 }
 
+li,
 p {
   font-size: 18px;
   line-height: 30px;
@@ -400,8 +401,8 @@ nav {
 .blog-page {
   .blog-page-text {
     a {
-      border-bottom: 1px solid black;
-      color: inherit;
+      border-bottom: 1px solid $teal;
+      color: $teal;
       text-decoration: none;
 
       &:hover {
@@ -416,6 +417,24 @@ nav {
       @media screen and (min-width: $tablet) {
         margin: 32px 0;
       }
+    }
+
+    blockquote {
+      border-left: 5px solid $teal;
+      color: #707070;
+      padding: 0 10px;
+
+      :first-child {
+        margin-top: 0;
+      }
+
+      :last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    li {
+      margin: 5px 0;
     }
   }
 
