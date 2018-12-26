@@ -51,6 +51,8 @@ export default {
             this.fetchPage(this.id);
         } else if (typeof this.id !== 'undefined') {
             this.$router.push('/admin/pages');
+        } else {
+            this.$store.commit('setPage', {});
         }
     },
     components: {
