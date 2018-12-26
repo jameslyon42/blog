@@ -10,6 +10,8 @@
 
     <link rel="stylesheet" href="/css/blog.css">
 
+    <meta property="fb:app_id" content="{{ env('FACEBOOK_APP_ID') }}" />
+
     @stack('meta')
 
     <script src="/js/blog.js" type="text/javascript"></script>
