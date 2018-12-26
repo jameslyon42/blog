@@ -11,7 +11,9 @@
     <meta property="og:type" content="article" />
     <meta property="og:description" content="{{ $page->description }}" />
     <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:image" content="{{ url($page->image) }}" />
+    @if(isset($page->image))
+        <meta property="og:image" content="{{ url($page->image) }}" />
+    @endif
     <meta property="article:author" content="Jill Gomez" />
     <meta property="article:tag" content="travel" />
     <meta property="article:published_time" content="{{ $page->published_at }}" />
