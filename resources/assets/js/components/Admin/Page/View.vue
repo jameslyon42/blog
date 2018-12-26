@@ -26,7 +26,6 @@ export default {
     },
     computed: {
         html() {
-            console.log(this.converter.getOptions());
             return this.converter.makeHtml(this.markdown);
         }
     }
