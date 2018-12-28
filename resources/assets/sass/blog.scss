@@ -134,8 +134,13 @@ h6 {
   font-family: $header-font;
   padding: 24px;
   position: relative;
-  text-align: center;
-  font-size: 24px;
+  text-align: left;
+  font-size: 14px;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 24px;
+    text-align: center;
+  }
 
   a {
     cursor: pointer;
@@ -264,11 +269,13 @@ nav.blog-nav {
   z-index: 12;
 
   .blog-nav-items-container {
+    height: 0;
     position: absolute;
     top: 70px;
     left: 0px;
     width: 100%;
     overflow: hidden;
+    transition: all .5s;
 
     @media screen and (min-width: $mobile-large) {
       top: 0;
@@ -355,6 +362,8 @@ nav.blog-nav {
     input:checked {
       & ~ {
         .blog-nav-items-container {
+          height: 500px;
+
           .blog-nav-items {
             transform: translateY(0);
           }
