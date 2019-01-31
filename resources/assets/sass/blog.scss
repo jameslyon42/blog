@@ -439,10 +439,13 @@ nav.blog-nav {
 
     img {
       display: block;
-      margin: 16px 0;
+      margin: 16px auto;
+      max-height: 500px;
+      max-width: 100%;
+      width: auto;
 
       @media screen and (min-width: $tablet) {
-        margin: 32px 0;
+        margin: 32px auto;
       }
     }
 
