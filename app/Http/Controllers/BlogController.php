@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entities\Page;
-use Illuminate\Http\Request;
+use DateTime;
 
 class BlogController extends Controller
 {
@@ -23,14 +23,28 @@ class BlogController extends Controller
 
     public function show($slug)
     {
-        $page = Page::whereSlug($slug)->first();
+        $now = new DateTime();
+
+        $page = Page::where([
+                ['published_at', '<=', $now->format('Y-m-d')],
+                ['slug', '=', $slug]
+            ])
+            ->first();
+
+        if (!$page) {
+            return redirect()->route('blog_home');
+        }
 
         return view('blog.page', compact('page'));
     }
 
     public function index()
     {
-        $pages = Page::orderBy('published_at', 'desc')->get();
+        $now = new DateTime();
+
+        $pages = Page::where('published_at', '<=', $now->format('Y-m-d'))
+            ->orderBy('published_at', 'desc')
+            ->get();
 
         return view('blog.index', compact('pages'));
     }
