@@ -14,7 +14,7 @@ class BlogController extends Controller
     {
         $recent_pages = Page::whereNotNull('published_at')
             ->orderBy('published_at', 'desc')
-            ->limit(3)
+            ->limit(6)
             ->get()
             ->toArray();
 
