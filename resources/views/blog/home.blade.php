@@ -7,9 +7,22 @@
 @endphp
 
 @section('content')
-    <div class="hero-image-container">
-        <img class="hero-image" src="/images/home_hero.jpeg">
+    <div class="hero-container">
+        <div class="hero-image"></div>
+        <div class="hero-content">
+            <div class="hero-content-container">
+                <div class="hero-content-title">The Jill Pill</div>
+                <br>
+                <div class="hero-content-subtext">Lifestyle, Wellness and Travel</div>
+            </div>
+        </div>
     </div>
+    <section class="blog-samples">
+        @foreach ($recent_pages as $page)
+            @component('blog.components.blog_sample', ['page' => $page])
+            @endcomponent
+        @endforeach
+    </section>
     {{--<section class="blog-about blog-section">--}}
         {{--<img class="blog-about-image" src="/images/about_jill_pill.jpeg">--}}
         {{--<div class="blog-about-description">--}}
@@ -21,10 +34,4 @@
             {{--</p>--}}
         {{--</div>--}}
     {{--</section>--}}
-    <section class="blog-samples">
-        @foreach ($recent_pages as $page)
-            @component('blog.components.blog_sample', ['page' => $page])
-            @endcomponent
-        @endforeach
-    </section>
 @endsection

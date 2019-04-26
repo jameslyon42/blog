@@ -98,33 +98,71 @@ h6 {
 .blog-content {
   position: relative;
 
-  .hero-image-container {
-    padding: 0 16px 16px;
+  .hero-container {
     position: relative;
-    margin-top: 70px;
+    margin: 70px 0 0 0;
     height: calc(100vh - 86px);
 
     @media screen and (min-width: $tablet) {
       box-sizing: border-box;
-      padding: 0 56px 56px;
       height: calc(100vh - 70px);
     }
 
     .hero-image {
       display: block;
-      object-fit: cover;
-      object-position: 50% 90%;
+      background: url("/images/home_hero.jpeg");
+      background-size: cover;
+      background-attachment: fixed;
+
       height: 100%;
       width: 100%;
+    }
+
+    .hero-content {
+      font-family: $title-font;
+      position: absolute;
+      top: 50%;
+      text-align: center;
+      transform: translateY(-50%);
+      width: 100%;
+
+      .hero-content-container {
+        display: inline-block;
+        text-align: center;
+
+        > div {
+          cursor: default;
+          display: inline-block;
+        }
+        
+        .hero-content-title {
+          font-size: 3em;
+          
+          @media screen and (min-width: $tablet) {
+            font-size: 4em;
+            margin-bottom: 10px;
+          }
+        }
+  
+        .hero-content-subtext {
+          font-size: 1em;
+
+          @media screen and (min-width: $tablet) {
+            font-size: 1.2em;
+          }
+        }
+      }
     }
   }
 
   .blog-samples {
     box-sizing: border-box;
     padding: 16px;
+    margin-top: 16px;
     width: 100%;
 
     @media screen and (min-width: $tablet) {
+      margin-top: 56px;
       padding: 0 56px 16px;
     }
   }
@@ -227,11 +265,16 @@ h6 {
       text-align: center;
       transform: translateY(-50%);
       transition: all .5s;
+      user-select: none;
       width: 100%;
 
       h2 {
         padding: 0 15px;
         margin: 0;
+      }
+
+      .blog-sample-location {
+        margin-top: 10px
       }
     }
 
