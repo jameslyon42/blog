@@ -62,7 +62,7 @@
             @yield('content')
         </div>
         <footer class="blog-footer">
-            <a href="mailto:jill@thejillpill.com">jill@thejillpill.com</a>
+            <a href="mailto:jillgomez42@gmail.com">jillgomez42@gmail.com</a>
             <nav>
                 <a href="/policy">Privacy Policy</a>
             </nav>

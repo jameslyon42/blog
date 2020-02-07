@@ -1,12 +1,5 @@
 <div class="social-icons">
     <a
-            class="fa social-icon social-icon-twitter"
-            href="https://www.twitter.com/the_jillpill"
-            target="_blank"
-    >
-        &#xf099;
-    </a>
-    <a
             class="fa social-icon social-icon-fb"
             href="https://www.facebook.com/profile.php?id=8831813"
             target="_blank"
